@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-B2pZeK/PZuL1DfGtnT+j9I4v3i1RczR6P2T4UmrToOo+UB1h19h9zrqrKDE5Od5S5upcfO1HEdI0Zb45qZpwSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        
         @keyframes blink {
             0% { opacity: 1; }
             50% { opacity: 0; }
@@ -22,39 +21,32 @@
             animation: blink 1s infinite; 
         }
 
-        
         .uppercase-text {
             text-transform: uppercase; 
             color: white; 
             font-family: 'Arial Black', sans-serif; 
         }
 
-        
         .carousel-item img {
             max-width: 400px; 
             height: auto; 
             margin: 0 auto; 
         }
 
-        
         #carouselExample {
             background-color: white; 
-            
         }
 
-        
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
             background-color: black; 
         }
 
-        
         .ver-mas-btn-container {
             max-width: 400px; 
             margin: 20px auto; 
         }
 
-        
         .ver-mas-btn {
             background-color: #ffc107; 
             color: black; 
@@ -73,7 +65,6 @@
             background-color: #ffa000; 
         }
 
-        
         .stock-container h3 {
             color: black; 
         }
@@ -84,9 +75,16 @@
             height: auto;
             margin-right: 10px; /* Espacio entre la imagen y el texto */
         }
+
+        /* Estilo para el mensaje de error */
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
+    <h1>Bienvenido a CodeStreet</h1>
     <p class="primero blink-text uppercase-text" style="margin-bottom: 0;">Envíos gratis por compras sobre $50.000</p>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black; margin-top: 0;">
         <div class="container-fluid">
@@ -128,32 +126,42 @@
             </div>
         </div>
     </nav>
-        <div class="container mt-5">
-            <form action="procesar_formulario.php" method="POST">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre">
-                </div>
-                <div class="mb-3">
-                    <label for="apellido" class="form-label">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" name="apellido">
-                </div>
-                <div class="mb-3">
-                    <label for="contacto" class="form-label">Número de contacto</label>
-                    <input type="text" class="form-control" id="contacto" name="contacto">
-                </div>
-                <div class="mb-3">
-                    <label for="pedido" class="form-label">Número de pedido</label>
-                    <input type="text" class="form-control" id="pedido" name="pedido">
-                </div>
-                <div class="mb-3">
-                    <label for="razon" class="form-label">Razón de devolución</label>
-                    <textarea class="form-control" id="razon" name="razon" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-                <a href="index.html" class="btn btn-secondary">Volver al inicio</a>
-            </form>
-        </div>
+    <div class="container mt-5">
+        <h2>Formulario de Devolución</h2>
+        <form id="devolucionForm" onsubmit="return validateForm()">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre">
+                <div id="nombreError" class="error-message"></div>
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido">
+                <div id="apellidoError" class="error-message"></div>
+            </div>
+            <div class="mb-3">
+                <label for="contacto" class="form-label">Número de contacto</label>
+                <input type="text" class="form-control" id="contacto" name="contacto">
+                <div id="contactoError" class="error-message"></div>
+            </div>
+            <div class="mb-3">
+                <label for="pedido" class="form-label">Número de pedido</label>
+                <input type="text" class="form-control" id="pedido" name="pedido">
+                <div id="pedidoError" class="error-message"></div>
+            </div>
+            <div class="mb-3">
+                <label for="razon" class="form-label">Razón de devolución</label>
+                <textarea class="form-control" id="razon" name="razon" rows="3"></textarea>
+                <div id="razonError" class="error-message"></div>
+            </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Adjuntar imagen</label>
+                <input type="file" class="form-control" id="imagen" name="imagen">
+                <div id="imagenError" class="error-message"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">Volver al inicio</button>
+        </form>
     </div>
 
     <footer class="footer">
@@ -169,5 +177,61 @@
     </footer>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        function validateForm() {
+            var nombre = document.getElementById("nombre").value;
+            var apellido = document.getElementById("apellido").value;
+            var contacto = document.getElementById("contacto").value;
+            var pedido = document.getElementById("pedido").value;
+            var razon = document.getElementById("razon").value;
+            var imagen = document.getElementById("imagen").value;
+
+            var hasError = false;
+
+            if (nombre === "") {
+                document.getElementById("nombreError").innerHTML = "Por favor, ingresa tu nombre";
+                hasError = true;
+            } else {
+                document.getElementById("nombreError").innerHTML = "";
+            }
+
+            if (apellido === "") {
+                document.getElementById("apellidoError").innerHTML = "Por favor, ingresa tu apellido";
+                hasError = true;
+            } else {
+                document.getElementById("apellidoError").innerHTML = "";
+            }
+
+            if (contacto === "") {
+                document.getElementById("contactoError").innerHTML = "Por favor, ingresa tu número de contacto";
+                hasError = true;
+            } else {
+                document.getElementById("contactoError").innerHTML = "";
+            }
+
+            if (pedido === "") {
+                document.getElementById("pedidoError").innerHTML = "Por favor, ingresa tu número de pedido";
+                hasError = true;
+            } else {
+                document.getElementById("pedidoError").innerHTML = "";
+            }
+
+            if (razon === "") {
+                document.getElementById("razonError").innerHTML = "Por favor, ingresa la razón de tu devolución";
+                hasError = true;
+            } else {
+                document.getElementById("razonError").innerHTML = "";
+            }
+
+            if (imagen === "") {
+                document.getElementById("imagenError").innerHTML = "Por favor, adjunta una imagen";
+                hasError = true;
+            } else {
+                document.getElementById("imagenError").innerHTML = "";
+            }
+
+            return !hasError;
+        }
+    </script>
 </body>
 </html>
