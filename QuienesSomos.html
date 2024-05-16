@@ -3,58 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeStreet</title>
+    <title>CodeStreet - Quienes Somos</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css"> 
     <link rel="icon" href="logonav2.ico">
- 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-B2pZeK/PZuL1DfGtnT+j9I4v3i1RczR6P2T4UmrToOo+UB1h19h9zrqrKDE5Od5S5upcfO1HEdI0Zb45qZpwSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <style>
-        
         @keyframes blink {
             0% { opacity: 1; }
             50% { opacity: 0; }
             100% { opacity: 1; }
         }
-
         .blink-text {
             animation: blink 1s infinite; 
         }
-
-        
         .uppercase-text {
             text-transform: uppercase; 
             color: white; 
             font-family: 'Arial Black', sans-serif; 
         }
-
-        
         .carousel-item img {
             max-width: 400px; 
             height: auto; 
             margin: 0 auto; 
         }
-
-        
         #carouselExample {
             background-color: white; 
-            
         }
-
-        
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
             background-color: black; 
         }
-
-        
         .ver-mas-btn-container {
             max-width: 400px; 
             margin: 20px auto; 
         }
-
-        
         .ver-mas-btn {
             color: black; 
             padding: 10px 20px;
@@ -67,27 +50,20 @@
             text-decoration: none; 
             transition: background-color 0.3s; 
         }
-
         .ver-mas-btn:hover {
-            background-color: transparent; /* Cambiado de #ffa000 a transparent */
+            background-color: transparent;
         }
-
-        
         .stock-container h3 {
             color: black; 
         }
-
-        /* Estilo para la imagen del carrito de compras */
         .cart-icon {
-            width: 30px; /* Tamaño deseado de la imagen */
+            width: 30px; 
             height: auto;
-            margin-right: 10px; /* Espacio entre la imagen y el texto */
+            margin-right: 10px; 
         }
-
-        /* Estilo para la sección de contacto */
         .contacto {
-            background-color: white; /* Cambiado de amarillo a blanco */
-            padding: 20px; /* Añadido espacio de relleno */
+            background-color: white; 
+            padding: 20px; 
         }
     </style>
 </head>
@@ -95,9 +71,7 @@
     <p class="primero blink-text uppercase-text" style="margin-bottom: 0;">Envíos gratis por compras sobre $50.000</p>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black; margin-top: 0;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <a class="navbar-brand" href="#"><img src="logonav2.png" alt=""></a>
-            </a>
+            <a class="navbar-brand" href="#"><img src="logonav2.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -119,10 +93,7 @@
                             <li><a class="dropdown-item" href="Devolucion.html">Devolucion</a></li>
                         </ul>
                     </li>
-                    
                 </ul>
-                
-                <!-- Imagen del carrito de compras -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="carrito.html">
@@ -133,9 +104,13 @@
             </div>
         </div>
     </nav>
+    
+    <div class="contenedor-imagen">
+        <img src="logonav2.png" alt="Logotipo">
+    </div>
+
     <div class="descripcion">
         <h1>Quienes Somos</h1>
-        
     </div>
     <div class="sobre-nosotros">
         <p>
@@ -144,10 +119,6 @@
             Gracias por formar parte de nuestra comunidad. ¡Explora nuestro catálogo y luce tu estilo con orgullo!
         </p>
     </div>
-    <div class="contenedor-imagen">
-        <img src="logonav2.png" alt="Logotipo">
-    </div>
-    
 
     <div class="contacto">
         <h2>Contacto</h2>
@@ -159,16 +130,8 @@
         </address>
     </div>
 
-    <footer class="footer">
-        <div class="left">
-            <p>&copy; CodeStreet.</p>
-        </div>
-        <div class="right">
-            <a href="https://instagram.com/tu_cuenta_de_instagram" target="_blank">
-                <img src="iglogo.png" alt="instagram" class="iglogo1">
-            </a>
-        </div>
-    </footer>
+    <!-- Botón de volver a index.html -->
+    <a href="index.html" class="btn btn-primary">Volver a Inicio</a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
