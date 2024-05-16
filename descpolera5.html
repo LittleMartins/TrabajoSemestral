@@ -28,7 +28,7 @@
         }
 
         .carousel-item img {
-            max-width: 400px; 
+            max-width: 100%; 
             height: auto; 
             margin: 0 auto; 
         }
@@ -76,10 +76,42 @@
             margin-right: 10px; /* Espacio entre la imagen y el texto */
         }
 
-        /* Estilo para el mensaje de error */
-        .error-message {
-            color: red;
-            margin-top: 5px;
+        .footer-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Estilos para hacer el footer responsive */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .footer p {
+            margin: 0;
+            flex: 1 0 100%;
+            text-align: center;
+        }
+
+        .footer img {
+            max-width: 100%;
+            margin-top: 10px;
+            flex: 1 0 100%;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer p, .footer img {
+                flex: 1 0 auto;
+            }
         }
     </style>
 </head>
@@ -125,99 +157,52 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-5">
-        <h2>Formulario de Devolución</h2>
-        <form id="devolucionForm" onsubmit="return validateForm()">
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre">
-                <div id="nombreError" class="error-message"></div>
+
+    <!-- Contenedor de Detalles del Producto -->
+    <div class="container product-details">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Carrusel -->
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Aquí puedes agregar las imágenes del carrusel -->
+                        <div class="carousel-item active">
+                            <img src="polera1.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="descimagenes.png" class="d-block w-100" alt="...">
+                        </div>
+                        <!-- Puedes agregar más imágenes siguiendo la misma estructura -->
+                    </div>
+                    <!-- Flechas de navegación -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="apellido" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="apellido" name="apellido">
-                <div id="apellidoError" class="error-message"></div>
+            <div class="col-md-6">
+                <p>
+                    <strong>Descripción</strong><br>
+                    <strong>Nombre:</strong> Black-Code<br>
+                    <strong>Color:</strong> Negro con rojo<br>
+                    <strong>Fit:</strong> Regular<br>
+                    <strong>Composición:</strong> Franela nacional 70% Algodón y 30% Poliéster para evitar encogimiento<br>
+                    <strong>Tela</strong> Pre encogida y suavizada. <br>
+                    <strong>Recomendaciones:</strong> Lavar al revés con agua fría, secar a temperatura ambiente y planchar la prenda al revés. Evitar uso de secadora<br>
+                    <strong>Precio:</strong> $20.000<br>
+                </p>
+                <button class="btn btn-primary" onclick="window.location.href='carrito.html'">¡Ir al carrito!</button>
+
             </div>
-            <div class="mb-3">
-                <label for="contacto" class="form-label">Número de contacto</label>
-                <input type="text" class="form-control" id="contacto" name="contacto">
-                <div id="contactoError" class="error-message"></div>
-            </div>
-            <div class="mb-3">
-                <label for="pedido" class="form-label">Número de pedido</label>
-                <input type="text" class="form-control" id="pedido" name="pedido">
-                <div id="pedidoError" class="error-message"></div>
-            </div>
-            <div class="mb-3">
-                <label for="razon" class="form-label">Razón de devolución</label>
-                <textarea class="form-control" id="razon" name="razon" rows="3"></textarea>
-                <div id="razonError" class="error-message"></div>
-            </div>
-            <div class="mb-3">
-                <label for="imagen" class="form-label">Adjuntar imagen</label>
-                <input type="file" class="form-control" id="imagen" name="imagen">
-                <div id="imagenError" class="error-message"></div>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-            <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">Volver al inicio</button>
-        </form>
+        </div>
     </div>
+    
+    <!-- Scripts JS (Bootstrap y otros) -->
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script>
-        function validateForm() {
-            var nombre = document.getElementById("nombre").value;
-            var apellido = document.getElementById("apellido").value;
-            var contacto = document.getElementById("contacto").value;
-            var pedido = document.getElementById("pedido").value;
-            var razon = document.getElementById("razon").value;
-            var imagen = document.getElementById("imagen").value;
-
-            var hasError = false;
-
-            if (nombre === "") {
-                document.getElementById("nombreError").innerHTML = "Por favor, ingresa tu nombre";
-                hasError = true;
-            } else {
-                document.getElementById("nombreError").innerHTML = "";
-            }
-
-            if (apellido === "") {
-                document.getElementById("apellidoError").innerHTML = "Por favor, ingresa tu apellido";
-                hasError = true;
-            } else {
-                document.getElementById("apellidoError").innerHTML = "";
-            }
-
-            if (contacto === "") {
-                document.getElementById("contactoError").innerHTML = "Por favor, ingresa tu número de contacto";
-                hasError = true;
-            } else {
-                document.getElementById("contactoError").innerHTML = "";
-            }
-
-            if (pedido === "") {
-                document.getElementById("pedidoError").innerHTML = "Por favor, ingresa tu número de pedido";
-                hasError = true;
-            } else {
-                document.getElementById("pedidoError").innerHTML = "";
-            }
-
-            if (razon === "") {
-                document.getElementById("razonError").innerHTML = "Por favor, ingresa la razón de tu devolución";
-                hasError = true;
-            } else {
-                document.getElementById("razonError").innerHTML = "";
-            }
-
-            if (imagen === "") {
-                document.getElementById("imagenError").innerHTML = "Por favor, adjunta una imagen";
-                hasError = true;
-            } else {
-                document.getElementById("imagenError").innerHTML = "";
-            }
-
-            return !hasError;
-        }
-    </script>
 </body>
 </html>
