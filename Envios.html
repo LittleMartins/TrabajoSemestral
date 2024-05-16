@@ -92,6 +92,7 @@
 
         .announcement{
             text-align: center;
+            display: none; /* Ocultar el anuncio por defecto */
         }
 
     </style>
@@ -147,7 +148,7 @@
                 <p>¡Gracias por elegir nuestros servicios de envío! En CodeStreet nos esforzamos por ofrecerte la mejor experiencia de envío posible.</p>
                 <p>Por favor, complete el siguiente formulario para enviar su solicitud de envío:</p>
                 <!-- Formulario de envío -->
-                <form action="procesar_envio.php" method="POST" onsubmit="showMessage()">
+                <form action="index.html" method="POST" onsubmit="showModal()">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -171,20 +172,35 @@
         </div>
     </div>
 
-    <div class="announcement" id="announcement">
-        ¡Gracias por enviar tu información! Pronto nos pondremos en contacto contigo.
+    <!-- Modal de confirmación -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¡Gracias!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Tu información ha sido enviada correctamente. Te redirigiremos a la página de inicio.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script> 
     <script>
-        function showMessage() {
-            var announcement = document.getElementById("announcement");
-            announcement.style.display = "block"; // Mostrar el anuncio
+        function showModal() {
+            $('#confirmationModal').modal('show'); // Mostrar el modal de confirmación
 
             setTimeout(function() {
-                window.location.href = "index.html"; 
-            }, 5000);
+                window.location.href = "index.html"; // Redireccionar después de 3 segundos
+            }, 3000);
         }
     </script>
-    <script src="js/bootstrap.bundle.min.js"></script> 
 </body>
 </html>
+g

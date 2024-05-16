@@ -136,3 +136,12 @@ const btnAccion = e => {
 
     e.stopPropagation();
 };
+const pagarBtn = document.getElementById('pagar');
+
+pagarBtn.addEventListener('click', () => {
+    const carritoArray = Object.values(carrito);
+    localStorage.setItem('carrito', JSON.stringify(carritoArray)); // Guardar el carrito como array en el localStorage
+    
+    // Redirigir a la página de pagar.html
+    window.location.href = 'pagar.html';
+});
